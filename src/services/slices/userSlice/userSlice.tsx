@@ -1,5 +1,5 @@
-import { TUser } from '../../utils/types';
-import { AppDispatch, RootState } from '../store';
+import { TUser } from '../../../utils/types';
+import { AppDispatch, RootState } from '../../store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface TUserState {

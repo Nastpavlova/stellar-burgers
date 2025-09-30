@@ -13,7 +13,11 @@ import {
   ProfileOrders,
   NotFound404
 } from '../../pages/index';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { 
+  Routes, 
+  Route, 
+  Outlet 
+} from 'react-router-dom';
 
 function MainPage() {
   return (
@@ -86,15 +90,18 @@ function App() {
 
 export default App;
 
-// по роуту / расположите компонент ConstructorPage;
-// по роуту /feed расположите компонент Feed;
-// по защищённому роуту /login расположите компонент Login;
-// по защищённому роуту /register расположите компонент Register;
-// по защищённому роуту /forgot-password расположите компонент ForgotPassword;
-// по защищённому роуту /reset-password расположите компонент ResetPassword;
-// по защищённому роуту /profile расположите компонент Profile;
-// по защищённому роуту /profile/orders расположите компонент ProfileOrders;
-// по роуту * расположите компонент NotFound404 .
+
+// {state?.background && (
+//   <Routes>
+//     <Route
+//       path='/profile/orders/:number'
+//       element={
+//         <Modal title={''} onClose={handleModalClose}>
+//           <OrderInfo />
+//         </Modal>
+//       }
+//     />
+//   </Routes>
 
 // Также нужно добавить модалки с дополнительной информацией:
 // по роуту /feed/:number расположите компонент Modal с компонентом OrderInfo;

@@ -22,6 +22,7 @@ export const constructorSlice = createSlice({
   }
 });
 
-export const selectorIngredients = (state: RootState) => state.constructor;
+export const selectorConstructorIngredients = (state: RootState) =>
+  state.constructor;
 
 export default constructorSlice.reducer;

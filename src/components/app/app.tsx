@@ -13,11 +13,7 @@ import {
   ProfileOrders,
   NotFound404
 } from '../../pages/index';
-import { 
-  Routes, 
-  Route, 
-  Outlet 
-} from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 function MainPage() {
   return (
@@ -89,7 +85,6 @@ function App() {
 }
 
 export default App;
-
 
 // {state?.background && (
 //   <Routes>

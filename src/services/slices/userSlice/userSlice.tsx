@@ -27,7 +27,7 @@ export const userSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder;
+    // builder;
     // Здесь будут async thunks
   }
 });

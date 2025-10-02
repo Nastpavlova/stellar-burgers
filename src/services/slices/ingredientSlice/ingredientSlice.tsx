@@ -1,6 +1,7 @@
 import { TIngredient } from '../../../utils/types';
 import { RootState } from '../../store';
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { getIngredientsApi } from '../../../utils/burger-api';
 
 interface TIngredientState {
   ingredients: TIngredient[];
@@ -14,13 +15,40 @@ const initialState: TIngredientState = {
   error: null
 };
 
+export const fetchIngredients = createAsyncThunk<
+  TIngredient[],
+  void,
+  { rejectValue: string }
+>('ingredients/fetchIngredients', async (_, { rejectWithValue }) => {
+  try {
+    return await getIngredientsApi();
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});
+
 export const ingredientSlice = createSlice({
   name: 'ingredients',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // builder;
-    // Здесь будут async thunks
+    builder
+      .addCase(fetchIngredients.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+
+      .addCase(fetchIngredients.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.ingredients = action.payload;
+      })
+
+      .addCase(fetchIngredients.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+        state.ingredients = [];
+      });
   }
 });
 

@@ -14,6 +14,9 @@ import {
   NotFound404
 } from '../../pages/index';
 import { Routes, Route, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector, RootState } from '../../services/store';
+import { useEffect } from 'react';
+import { fetchIngredients } from '../../services/slices/ingredientSlice/ingredientSlice';
 
 function MainPage() {
   return (
@@ -25,6 +28,22 @@ function MainPage() {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  const ingredients = useSelector(
+    (state: RootState) => state.ingredients.ingredients
+  );
+  const isLoading = useSelector(
+    (state: RootState) => state.ingredients.isLoading
+  );
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('Ingredients state updated:', { ingredients, isLoading });
+  }, [ingredients, isLoading]);
+
   return (
     <Routes>
       <Route element={<MainPage />}>

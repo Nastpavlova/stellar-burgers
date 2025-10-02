@@ -12,8 +12,8 @@ const initialState: TconstructorState = {
   ingredients: []
 };
 
-export const constructorSlice = createSlice({
-  name: 'constructor',
+export const constructorBurgerSlice = createSlice({
+  name: 'constructorBurger',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -22,7 +22,9 @@ export const constructorSlice = createSlice({
   }
 });
 
-export const selectorConstructorIngredients = (state: RootState) =>
-  state.constructor;
+// селекторы
+export const selectorBun = (state: RootState) => state.constructorBurger.bun;
+export const selectorIngredients = (state: RootState) =>
+  state.constructorBurger.ingredients;
 
-export default constructorSlice.reducer;
+export default constructorBurgerSlice.reducer;

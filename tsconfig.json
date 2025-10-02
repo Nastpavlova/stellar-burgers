@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "types": ["node", "jest"],
+    // "types": ["node", "jest"], почему то горело красным jest
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
       "@pages": ["src/pages"],

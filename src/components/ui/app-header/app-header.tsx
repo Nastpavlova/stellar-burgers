@@ -15,18 +15,19 @@ interface NavItemProps {
   icon: (isActive: boolean) => React.ReactNode;
   text: string;
   userName?: string;
+  className?: string; //дополнительные CSS классы
 }
 
-// компонент нафигации для хедера
-const NavItem = ({ to, icon, text, userName }: NavItemProps) => (
+// кастомный компонент навигации для хедера
+const NavItem = ({ to, icon, text, userName, className }: NavItemProps) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      clsx(styles.link, isActive && styles.link_active)
+      clsx(styles.link, isActive && styles.link_active, className)
     }
   >
     {({ isActive }) => (
-      <div>
+      <div className={clsx(styles.link, isActive && styles.link_active)}>
         {icon(isActive)}
         <p className='text text_type_main-default ml-2'>{userName || text}</p>
       </div>
@@ -44,6 +45,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
             <BurgerIcon type={isActive ? 'primary' : 'secondary'} />
           )}
           text='Конструктор'
+          className='mr-10'
         />
         <NavItem
           to='/feed'
@@ -55,7 +57,12 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
       </div>
 
       <div className={styles.logo}>
-        <NavLink to='/' className={styles.link}>
+        <NavLink
+          to='/'
+          className={({ isActive }) =>
+            clsx(styles.link, isActive && styles.link_active)
+          }
+        >
           <Logo className='' />
         </NavLink>
       </div>

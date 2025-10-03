@@ -1,6 +1,13 @@
 import { TUser } from '../../../utils/types';
 import { AppDispatch, RootState } from '../../store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  registerUserApi,
+  loginUserApi,
+  getUserApi,
+  logoutApi,
+  updateUserApi
+} from '../../../utils/burger-api';
 
 interface TUserState {
   isAuthChecked: boolean;

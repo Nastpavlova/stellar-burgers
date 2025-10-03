@@ -1,12 +1,17 @@
 import { TUser } from '../../../utils/types';
 import { AppDispatch, RootState } from '../../store';
-import { createSlice, PayloadAction, createAsyncThunk, isRejectedWithValue} from '@reduxjs/toolkit';
+import {
+  createSlice,
+  PayloadAction,
+  createAsyncThunk,
+  isRejectedWithValue
+} from '@reduxjs/toolkit';
 import { setCookie } from '../../../utils/cookie';
-import { 
-  registerUserApi, 
-  loginUserApi, 
-  getUserApi, 
-  logoutApi, 
+import {
+  registerUserApi,
+  loginUserApi,
+  getUserApi,
+  logoutApi,
   updateUserApi,
   TAuthResponse,
   TLoginData,
@@ -14,7 +19,6 @@ import {
   TUserResponse,
   TRegisterData
 } from '../../../utils/burger-api';
-
 
 interface TUserState {
   isAuthChecked: boolean;
@@ -42,7 +46,7 @@ export const fetchLogin = createAsyncThunk<
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }
-})
+});
 
 // разлогиниться
 export const fetchLogout = createAsyncThunk<
@@ -58,27 +62,27 @@ export const fetchLogout = createAsyncThunk<
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }
-})
+});
 
-// получить пользователя
-export const fetchGetUser = createAsyncThunk<
+// обновить данные пользователя
+export const fetchUpdateUser = createAsyncThunk<
   TUserResponse,
-  void,
-  { rejectValue: string } 
->('user/getUser', async (_, { rejectWithValue }) => {
+  Partial<TRegisterData>,
+  { rejectValue: string }
+>('user/updateUser', async (data, { rejectWithValue }) => {
   try {
-    return await getUserApi();
+    return await updateUserApi(data);
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }
-})
+});
 
 // регистрация нового юзера
-export const fetchRegisterUser = createAsyncThunk<
+export const fetchAuthUser = createAsyncThunk<
   TAuthResponse,
-  TRegisterData, 
+  TRegisterData,
   { rejectValue: string }
->('user/registration', async (data, { rejectWithValue }) => {
+>('user/auth', async (data, { rejectWithValue }) => {
   try {
     const result = await registerUserApi(data);
     localStorage.setItem('refreshToken', result.refreshToken);
@@ -87,13 +91,38 @@ export const fetchRegisterUser = createAsyncThunk<
   } catch (error) {
     return rejectWithValue((error as Error).message);
   }
-})
+});
+
+// проверка авторизации
+export const checkUserAuth = createAsyncThunk<
+  void,
+  void,
+  { dispatch: AppDispatch }
+>('user/checkUserAuth', async (_, { dispatch }) => {
+  if (localStorage.getItem('refreshToken')) {
+    try {
+      const res = await getUserApi();
+      if (res.success) {
+        dispatch(setUser(res.user));
+      } else {
+        dispatch(setUser(null));
+      }
+    } catch {
+      dispatch(setUser(null));
+      localStorage.removeItem('refreshToken');
+      setCookie('accessToken', '', { expires: -1 });
+    }
+  } else {
+    dispatch(setUser(null));
+  }
+  dispatch(setAuthChecked(true));
+});
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    authChecked: (state, action: PayloadAction<boolean>) => {
+    setAuthChecked: (state, action: PayloadAction<boolean>) => {
       state.isAuthChecked = action.payload;
     },
 
@@ -113,6 +142,6 @@ export const selectorAuthChecked = (state: RootState) =>
   state.user.isAuthChecked;
 
 // экшены
-export const { authChecked, setUser } = userSlice.actions;
+export const { setAuthChecked, setUser } = userSlice.actions;
 
 export default userSlice.reducer;

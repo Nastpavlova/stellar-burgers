@@ -22,11 +22,24 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(selectorUser);
+  console.log('user == ', user);
 
   // дописать
   const onOrderClick = () => {
     if (!bun || orderRequest) return;
+
+    if (!user) {
+      return navigate('/login');
+    }
   };
+
+  //   const orderData = [
+  //     constructorItems.bun._id,
+  //     ...constructorItems.ingredients.map((item) => item._id),
+  //     constructorItems.bun._id
+  //   ];
+  //   dispatch(orderBurger(orderData));
+  // };
 
   // дописать
   const closeOrderModal = () => {};

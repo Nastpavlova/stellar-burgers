@@ -1,7 +1,7 @@
 import { TIngredient } from '../../../utils/types';
 import { RootState } from '../../store';
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { getIngredientsApi } from '../../../utils/burger-api';
+import { getIngredientsApi } from '../../../utils/api/ingredient-api';
 
 interface TIngredientState {
   ingredients: TIngredient[];

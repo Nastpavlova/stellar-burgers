@@ -14,7 +14,7 @@ import {
   getUserApi,
   logoutApi,
   updateUserApi
-} from '../../../utils/burger-api';
+} from '../../../utils/api/user-api';
 import {
   TAuthResponse,
   TLoginData,

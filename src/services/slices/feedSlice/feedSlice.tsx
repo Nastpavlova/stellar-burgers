@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { TOrdersData } from '@utils-types';
 import { RootState } from 'src/services/store';
-import { getFeedsApi, TFeedsResponse } from '../../../utils/burger-api';
+import { getFeedsApi } from '../../../utils/burger-api';
+import { TFeedsResponse } from '../../../utils/api-types';
 
 interface TfeedState {
   ordersData: TOrdersData;

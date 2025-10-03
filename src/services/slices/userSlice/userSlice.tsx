@@ -13,13 +13,15 @@ import {
   loginUserApi,
   getUserApi,
   logoutApi,
-  updateUserApi,
+  updateUserApi
+} from '../../../utils/burger-api';
+import {
   TAuthResponse,
   TLoginData,
   TLogoutResponse,
   TUserResponse,
   TRegisterData
-} from '../../../utils/burger-api';
+} from '../../../utils/api-types';
 
 interface TUserState {
   isAuthChecked: boolean;

@@ -4,7 +4,8 @@ import {
   createSlice,
   PayloadAction,
   createAsyncThunk,
-  isRejectedWithValue
+  isPending,
+  isRejected
 } from '@reduxjs/toolkit';
 import { setCookie } from '../../../utils/cookie';
 import {
@@ -131,13 +132,46 @@ export const userSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    // builder;
-    // Здесь будут async thunks
+    builder
+
+      // залогиниться
+      .addCase(fetchLogin.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isAuthChecked = true;
+      })
+
+      // разлогиниться
+      .addCase(fetchLogout.fulfilled, (state) => {
+        state.user = null;
+        state.isAuthChecked = false;
+      })
+
+      // обновить данные пользователя
+      .addCase(fetchUpdateUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+      })
+
+      // регистрация нового юзера
+      .addCase(fetchAuthUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isAuthChecked = true;
+      })
+
+      // pending
+      .addMatcher(isPending, (state) => {
+        state.error = null;
+      })
+
+      // rejected
+      .addMatcher(isRejected, (state, action) => {
+        state.error = action.error.message as string;
+      });
   }
 });
 
 // селекторы
 export const selectorUser = (state: RootState) => state.user.user;
+export const selectorUserError = (state: RootState) => state.user.error;
 export const selectorAuthChecked = (state: RootState) =>
   state.user.isAuthChecked;
 

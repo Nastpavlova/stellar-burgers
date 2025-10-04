@@ -27,6 +27,8 @@ function MainPage() {
   );
 }
 
+// test
+
 function App() {
   const dispatch = useDispatch();
   const ingredients = useSelector(

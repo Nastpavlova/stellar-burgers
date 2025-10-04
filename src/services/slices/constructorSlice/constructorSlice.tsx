@@ -10,7 +10,7 @@ interface TconstructorState {
 const initialState: TconstructorState = {
   bun: null,
   ingredients: []
-};
+}; 
 
 export const constructorBurgerSlice = createSlice({
   name: 'constructorBurger',

@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '../../../utils/types';
 import { RootState } from '../../store';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 interface TconstructorState {
   bun: TIngredient | null;
@@ -10,12 +11,42 @@ interface TconstructorState {
 const initialState: TconstructorState = {
   bun: null,
   ingredients: []
-}; 
+};
 
 export const constructorBurgerSlice = createSlice({
   name: 'constructorBurger',
   initialState,
-  reducers: {},
+  reducers: {
+    addBun: (state, action: PayloadAction<TIngredient>) => {
+      state.bun = action.payload;
+    },
+
+    addIngredient: (state, action: PayloadAction<TIngredient>) => {
+      state.ingredients.push({
+        ...action.payload,
+        id: nanoid()
+      });
+    },
+
+    removeIngredient: (
+      state,
+      action: PayloadAction<TConstructorIngredient>
+    ) => {
+      state.ingredients = state.ingredients.filter(
+        (ingredient) => ingredient.id !== action.payload.id
+      );
+    },
+
+    moveIngredientUp: (state, action: PayloadAction<number>) => {
+      [
+        state.ingredients[action.payload],
+        state.ingredients[action.payload - 1]
+      ] = [
+        state.ingredients[action.payload - 1],
+        state.ingredients[action.payload]
+      ];
+    }
+  },
   extraReducers: (builder) => {
     // builder;
     // Здесь будут async thunks
@@ -27,4 +58,26 @@ export const selectorBun = (state: RootState) => state.constructorBurger.bun;
 export const selectorIngredients = (state: RootState) =>
   state.constructorBurger.ingredients;
 
+export const { addBun, addIngredient, removeIngredient } =
+  constructorBurgerSlice.actions;
+
 export default constructorBurgerSlice.reducer;
+
+//     moveUp: (state, action: PayloadAction<number>) => {
+//       let temp = state.ingredients[action.payload];
+//       state.ingredients[action.payload] = state.ingredients[action.payload - 1];
+//       state.ingredients[action.payload - 1] = temp;
+//     },
+//     moveDown: (state, action: PayloadAction<number>) => {
+//       let temp = state.ingredients[action.payload];
+//       state.ingredients[action.payload] = state.ingredients[action.payload + 1];
+//       state.ingredients[action.payload + 1] = temp;
+//     }
+//   },
+//   extraReducers: (builder) => {
+//     builder.addCase(orderBurger.fulfilled, (state) => {
+//       state.bun = null;
+//       state.ingredients = [];
+//     });
+//   }
+// });

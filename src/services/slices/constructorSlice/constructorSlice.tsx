@@ -45,6 +45,16 @@ export const constructorBurgerSlice = createSlice({
         state.ingredients[action.payload - 1],
         state.ingredients[action.payload]
       ];
+    },
+
+    moveIngredientDown: (state, action: PayloadAction<number>) => {
+      [
+        state.ingredients[action.payload],
+        state.ingredients[action.payload - 1]
+      ] = [
+        state.ingredients[action.payload - 1],
+        state.ingredients[action.payload]
+      ];
     }
   },
   extraReducers: (builder) => {
@@ -58,22 +68,16 @@ export const selectorBun = (state: RootState) => state.constructorBurger.bun;
 export const selectorIngredients = (state: RootState) =>
   state.constructorBurger.ingredients;
 
-export const { addBun, addIngredient, removeIngredient } =
-  constructorBurgerSlice.actions;
+export const {
+  addBun,
+  addIngredient,
+  removeIngredient,
+  moveIngredientUp,
+  moveIngredientDown
+} = constructorBurgerSlice.actions;
 
 export default constructorBurgerSlice.reducer;
 
-//     moveUp: (state, action: PayloadAction<number>) => {
-//       let temp = state.ingredients[action.payload];
-//       state.ingredients[action.payload] = state.ingredients[action.payload - 1];
-//       state.ingredients[action.payload - 1] = temp;
-//     },
-//     moveDown: (state, action: PayloadAction<number>) => {
-//       let temp = state.ingredients[action.payload];
-//       state.ingredients[action.payload] = state.ingredients[action.payload + 1];
-//       state.ingredients[action.payload + 1] = temp;
-//     }
-//   },
 //   extraReducers: (builder) => {
 //     builder.addCase(orderBurger.fulfilled, (state) => {
 //       state.bun = null;

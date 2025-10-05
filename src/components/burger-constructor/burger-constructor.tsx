@@ -22,7 +22,6 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(selectorUser);
-  console.log('user == ', user);
 
   // дописать
   const onOrderClick = () => {

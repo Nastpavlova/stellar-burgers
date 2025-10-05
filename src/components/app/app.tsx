@@ -40,9 +40,7 @@ function App() {
     dispatch(fetchIngredients());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('Ingredients state updated:', { ingredients, isLoading });
-  }, [ingredients, isLoading]);
+  useEffect(() => {}, [ingredients, isLoading]);
 
   return (
     <Routes>

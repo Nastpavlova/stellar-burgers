@@ -28,33 +28,34 @@ export const constructorBurgerSlice = createSlice({
       });
     },
 
-    removeIngredient: (
-      state,
-      action: PayloadAction<TConstructorIngredient>
-    ) => {
+    removeIngredient: (state, action: PayloadAction<string>) => {
       state.ingredients = state.ingredients.filter(
-        (ingredient) => ingredient.id !== action.payload.id
+        (ingredient) => ingredient.id !== action.payload
       );
     },
 
     moveIngredientUp: (state, action: PayloadAction<number>) => {
-      [
-        state.ingredients[action.payload],
-        state.ingredients[action.payload - 1]
-      ] = [
-        state.ingredients[action.payload - 1],
-        state.ingredients[action.payload]
-      ];
+      if (action.payload > 0) {
+        [
+          state.ingredients[action.payload],
+          state.ingredients[action.payload - 1]
+        ] = [
+          state.ingredients[action.payload - 1],
+          state.ingredients[action.payload]
+        ];
+      }
     },
 
     moveIngredientDown: (state, action: PayloadAction<number>) => {
-      [
-        state.ingredients[action.payload],
-        state.ingredients[action.payload - 1]
-      ] = [
-        state.ingredients[action.payload - 1],
-        state.ingredients[action.payload]
-      ];
+      if (action.payload < state.ingredients.length - 1) {
+        [
+          state.ingredients[action.payload],
+          state.ingredients[action.payload + 1]
+        ] = [
+          state.ingredients[action.payload + 1],
+          state.ingredients[action.payload]
+        ];
+      }
     }
   },
   extraReducers: (builder) => {

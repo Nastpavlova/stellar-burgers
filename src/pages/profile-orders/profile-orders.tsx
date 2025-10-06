@@ -15,5 +15,5 @@ export const ProfileOrders: FC = () => {
     dispatch(fetchGetOrders());
   }, [dispatch]);
 
-  return <ProfileOrdersUI orders={orders} />;
+  return <ProfileOrdersUI orders={orders || []} />;
 };

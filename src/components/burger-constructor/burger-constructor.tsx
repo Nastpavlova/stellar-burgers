@@ -10,12 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import {
   selectorOrderRequest,
   selectorModalData
-} from '../../services/slices/orderSLice/orderSlice';
+} from '../../services/slices/orderSlice/orderSlice';
 import { selectorUser } from '../../services/slices/userSlice/userSlice';
 import {
   clearOrderModal,
   fetchMakeOrder
-} from '../../services/slices/orderSLice/orderSlice';
+} from '../../services/slices/orderSlice/orderSlice';
 
 export const BurgerConstructor: FC = () => {
   const bun = useSelector(selectorBun);

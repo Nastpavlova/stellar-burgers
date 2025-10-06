@@ -93,7 +93,7 @@ export const orderSlice = createSlice({
 
       .addCase(fetchOrderByNumber.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.orderModalData = action.payload;
+        state.order = action.payload;
       })
 
       .addCase(fetchOrderByNumber.rejected, (state, action) => {

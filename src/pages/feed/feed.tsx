@@ -9,10 +9,22 @@ import {
   selectIsLoading
 } from '../../services/slices/feedSlice/feedSlice';
 
+
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
+// ИСПРАВИТЬ // ИСПРАВИТЬ
 export const Feed: FC = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const feedOrders: TOrder[] = useSelector(selectorOrders);
+
+  console.log('feedOrders:', feedOrders); // ИСПРАВИТЬ// ИСПРАВИТЬ// ИСПРАВИТЬ// ИСПРАВИТЬ// ИСПРАВИТЬ// ИСПРАВИТЬ// ИСПРАВИТЬ
+
 
   useEffect(() => {
     dispatch(fetchGetFeeds());

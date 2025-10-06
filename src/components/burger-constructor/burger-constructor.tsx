@@ -12,6 +12,10 @@ import {
   selectorModalData
 } from '../../services/slices/orderSLice/orderSlice';
 import { selectorUser } from '../../services/slices/userSlice/userSlice';
+import {
+  clearOrderModal,
+  fetchMakeOrder
+} from '../../services/slices/orderSLice/orderSlice';
 
 export const BurgerConstructor: FC = () => {
   const bun = useSelector(selectorBun);
@@ -23,25 +27,26 @@ export const BurgerConstructor: FC = () => {
   const navigate = useNavigate();
   const user = useSelector(selectorUser);
 
-  // дописать
   const onOrderClick = () => {
     if (!bun || orderRequest) return;
 
     if (!user) {
       return navigate('/login');
     }
+
+    const orderData = [
+      bun._id,
+      ...ingredients.map((item) => item._id),
+      bun._id
+    ];
+
+    dispatch(fetchMakeOrder(orderData));
   };
 
-  //   const orderData = [
-  //     constructorItems.bun._id,
-  //     ...constructorItems.ingredients.map((item) => item._id),
-  //     constructorItems.bun._id
-  //   ];
-  //   dispatch(orderBurger(orderData));
-  // };
-
-  // дописать
-  const closeOrderModal = () => {};
+  const closeOrderModal = () => {
+    dispatch(clearOrderModal());
+    navigate('/');
+  };
 
   const price = useMemo(
     () =>

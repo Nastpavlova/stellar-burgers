@@ -61,7 +61,11 @@ export const fetchOrderByNumber = createAsyncThunk<
 export const orderSlice = createSlice({
   name: 'order',
   initialState,
-  reducers: {},
+  reducers: {
+    clearOrderModal: (state) => {
+      state.orderModalData = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
 
@@ -108,5 +112,8 @@ export const selectorOrderError = (state: RootState) => state.order.orderError;
 export const selectorOrder = (state: RootState) => state.order.order;
 export const selectorIsLoading = (state: RootState) => state.order.isLoading;
 export const selectorError = (state: RootState) => state.order.error;
+
+//экшены
+export const { clearOrderModal } = orderSlice.actions;
 
 export default orderSlice.reducer;

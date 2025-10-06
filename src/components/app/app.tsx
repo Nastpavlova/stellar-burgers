@@ -52,10 +52,23 @@ function App() {
 
   return (
     <>
-      <Routes>
+      <Routes location={state?.background || location}>
         <Route element={<MainPage />}>
           <Route path='/' element={<ConstructorPage />} />
           <Route path='/feed' element={<Feed />} />
+
+          {/* маршруты для прямого перехода */}
+          <Route path='/ingredients/:id' element={<IngredientDetails />} />
+          <Route path='/feed/:number' element={<OrderInfo />} />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <ProtectedRoute>
+                <OrderInfo />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path='/login'
             element={

@@ -81,11 +81,11 @@ export const fetchUpdateUser = createAsyncThunk<
 });
 
 // регистрация нового юзера
-export const fetchAuthUser = createAsyncThunk<
+export const fetchRegistrationhUser = createAsyncThunk<
   TAuthResponse,
   TRegisterData,
   { rejectValue: string }
->('user/auth', async (data, { rejectWithValue }) => {
+>('user/registration', async (data, { rejectWithValue }) => {
   try {
     const result = await registerUserApi(data);
     localStorage.setItem('refreshToken', result.refreshToken);
@@ -154,7 +154,7 @@ export const userSlice = createSlice({
       })
 
       // регистрация нового юзера
-      .addCase(fetchAuthUser.fulfilled, (state, action) => {
+      .addCase(fetchRegistrationhUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isAuthChecked = true;
       })

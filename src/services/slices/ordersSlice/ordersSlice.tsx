@@ -58,4 +58,4 @@ export const selectorOrdersIsLoading = (state: RootState) =>
 export const selectorOrders = (state: RootState) => state.orders.orders;
 export const selectorError = (state: RootState) => state.orders.error;
 
-export default ordersSlice.reducer;
+export const ordersReducer = ordersSlice.reducer;

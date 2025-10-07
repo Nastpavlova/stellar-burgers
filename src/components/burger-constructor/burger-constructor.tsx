@@ -4,18 +4,16 @@ import { BurgerConstructorUI } from '@ui';
 import {
   selectorIngredients,
   selectorBun
-} from '../../services/slices/constructorSlice/constructorSlice';
+} from '../../services/slices/constructorSlice';
 import { useDispatch, useSelector } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 import {
   selectorOrderRequest,
-  selectorModalData
-} from '../../services/slices/orderSlice/orderSlice';
-import { selectorUser } from '../../services/slices/userSlice/userSlice';
-import {
+  selectorModalData,
   clearOrderModal,
   fetchMakeOrder
-} from '../../services/slices/orderSlice/orderSlice';
+} from '../../services/slices/orderSlice';
+import { selectorUser } from '../../services/slices/userSlice';
 
 export const BurgerConstructor: FC = () => {
   const bun = useSelector(selectorBun);

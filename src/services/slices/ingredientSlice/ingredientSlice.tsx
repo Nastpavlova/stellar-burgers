@@ -58,4 +58,4 @@ export const selectorIngredients = (state: RootState) =>
 export const selectorIsLoading = (state: RootState) =>
   state.ingredients.isLoading;
 
-export default ingredientSlice.reducer;
+export const ingredientsReducer = ingredientSlice.reducer;

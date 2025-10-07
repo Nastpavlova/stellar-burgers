@@ -66,4 +66,4 @@ export const selectorFeed = (state: RootState) => state.feed.ordersData;
 export const selectorOrders = (state: RootState) =>
   state.feed.ordersData.orders;
 
-export default feedSlice.reducer;
+export const feedReducer = feedSlice.reducer;

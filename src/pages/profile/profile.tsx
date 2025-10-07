@@ -1,10 +1,7 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from '../../services/store';
-import {
-  fetchUpdateUser,
-  selectorUser
-} from '../../services/slices/userSlice/userSlice';
+import { fetchUpdateUser, selectorUser } from '../../services/slices/userSlice';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();

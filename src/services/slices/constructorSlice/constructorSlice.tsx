@@ -2,6 +2,7 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '../../../utils/types';
 import { RootState } from '../../store';
 import { PayloadAction } from '@reduxjs/toolkit';
+import { fetchMakeOrder } from '../orderSlice';
 
 interface TconstructorState {
   bun: TIngredient | null;
@@ -59,8 +60,10 @@ export const constructorBurgerSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    // builder;
-    // Здесь будут async thunks
+    builder.addCase(fetchMakeOrder.fulfilled, (state) => {
+      state.bun = null;
+      state.ingredients = [];
+    });
   }
 });
 
@@ -69,6 +72,7 @@ export const selectorBun = (state: RootState) => state.constructorBurger.bun;
 export const selectorIngredients = (state: RootState) =>
   state.constructorBurger.ingredients;
 
+// экшены
 export const {
   addBun,
   addIngredient,
@@ -77,12 +81,4 @@ export const {
   moveIngredientDown
 } = constructorBurgerSlice.actions;
 
-export default constructorBurgerSlice.reducer;
-
-//   extraReducers: (builder) => {
-//     builder.addCase(orderBurger.fulfilled, (state) => {
-//       state.bun = null;
-//       state.ingredients = [];
-//     });
-//   }
-// });
+export const constructorReducer = constructorBurgerSlice.reducer;

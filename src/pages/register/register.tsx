@@ -3,7 +3,7 @@ import { RegisterUI } from '@ui-pages';
 import {
   fetchRegistrationhUser,
   selectorUserError
-} from '../../services/slices/userSlice/userSlice';
+} from '../../services/slices/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 

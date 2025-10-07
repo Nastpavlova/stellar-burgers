@@ -5,7 +5,7 @@ import { IngredientsCategoryUI } from '../ui/ingredients-category';
 import {
   selectorBun,
   selectorIngredients
-} from '../../services/slices/constructorSlice/constructorSlice';
+} from '../../services/slices/constructorSlice';
 import { useSelector } from '../../services/store';
 
 export const IngredientsCategory = forwardRef<

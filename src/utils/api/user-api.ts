@@ -8,7 +8,7 @@ import {
   TLoginData
 } from '../api-types';
 
-// регистрация нового юзера (userSlice -> fetchAuthUser)
+// регистрация нового юзера (userSlice -> fetchRegistrationhUser)
 export const registerUserApi = (data: TRegisterData) =>
   fetch(`${URL}/auth/register`, {
     method: 'POST',

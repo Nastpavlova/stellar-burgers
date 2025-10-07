@@ -116,4 +116,4 @@ export const selectorError = (state: RootState) => state.order.error;
 //экшены
 export const { clearOrderModal } = orderSlice.actions;
 
-export default orderSlice.reducer;
+export const orderReducer = orderSlice.reducer;

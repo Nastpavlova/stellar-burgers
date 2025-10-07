@@ -1,1 +1,1 @@
-// export { ingredientSlice } from './ingredientSlice';
+export * from './ingredientSlice';

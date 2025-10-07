@@ -22,8 +22,8 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
 import { useEffect } from 'react';
-import { fetchIngredients } from '../../services/slices/ingredientSlice/ingredientSlice';
-import { checkUserAuth } from '../../services/slices/userSlice/userSlice';
+import { fetchIngredients } from '../../services/slices/ingredientSlice';
+import { checkUserAuth } from '../../services/slices/userSlice';
 
 function MainPage() {
   return (
@@ -34,9 +34,13 @@ function MainPage() {
   );
 }
 
+interface LocationState {
+  background?: Location;
+}
+
 function App() {
   const location = useLocation();
-  const state = location.state as { background?: Location };
+  const state = location.state as LocationState;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

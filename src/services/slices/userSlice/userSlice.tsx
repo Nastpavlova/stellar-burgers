@@ -180,4 +180,4 @@ export const selectorAuthChecked = (state: RootState) =>
 // экшены
 export const { setAuthChecked, setUser } = userSlice.actions;
 
-export default userSlice.reducer;
+export const userReducer = userSlice.reducer;

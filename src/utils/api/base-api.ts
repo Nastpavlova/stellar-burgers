@@ -1,5 +1,5 @@
-import { TRefreshResponse } from '../api-types';
-import { setCookie } from '../cookie';
+import { TRefreshResponse } from '../types/api-types';
+import { setCookie } from '../types/cookie';
 
 export const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));

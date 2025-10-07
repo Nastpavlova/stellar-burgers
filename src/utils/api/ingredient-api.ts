@@ -1,5 +1,5 @@
 import { checkResponse, URL } from '../api/base-api';
-import { TIngredientsResponse } from '../api-types';
+import { TIngredientsResponse } from '../types/api-types';
 
 // получение ингредиентов (ingredientSlice -> fetchIngredients)
 export const getIngredientsApi = () =>

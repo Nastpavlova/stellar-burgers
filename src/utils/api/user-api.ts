@@ -1,4 +1,4 @@
-import { getCookie } from '../cookie';
+import { getCookie } from '../types/cookie';
 import { fetchWithRefresh, URL, checkResponse } from './base-api';
 import {
   TServerResponse,
@@ -6,7 +6,7 @@ import {
   TRegisterData,
   TAuthResponse,
   TLoginData
-} from '../api-types';
+} from '../types/api-types';
 
 // регистрация нового юзера (userSlice -> fetchRegistrationhUser)
 export const registerUserApi = (data: TRegisterData) =>

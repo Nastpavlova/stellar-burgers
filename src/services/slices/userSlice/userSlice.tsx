@@ -1,4 +1,4 @@
-import { TUser } from '../../../utils/types';
+import { TUser } from '../../../utils/types/types';
 import { AppDispatch, RootState } from '../../store';
 import {
   createSlice,
@@ -7,7 +7,7 @@ import {
   isPending,
   isRejected
 } from '@reduxjs/toolkit';
-import { setCookie } from '../../../utils/cookie';
+import { setCookie } from '../../../utils/types/cookie';
 import {
   registerUserApi,
   loginUserApi,
@@ -21,7 +21,7 @@ import {
   TLogoutResponse,
   TUserResponse,
   TRegisterData
-} from '../../../utils/api-types';
+} from '../../../utils/types/api-types';
 
 interface TUserState {
   isAuthChecked: boolean;

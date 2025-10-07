@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { TOrder } from '../../../utils/types';
+import { TOrder } from '../../../utils/types/types';
 import { RootState } from 'src/services/store';
 import { getOrdersApi } from '../../../utils/api/order-api';
 

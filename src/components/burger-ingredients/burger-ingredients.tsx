@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, FC } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { selectorIngredients } from '../../services/slices/ingredientSlice';
 
-import { TTabMode } from '@utils-types';
+import { TTabMode } from 'src/utils/types/types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 import { useSelector } from 'react-redux';
 

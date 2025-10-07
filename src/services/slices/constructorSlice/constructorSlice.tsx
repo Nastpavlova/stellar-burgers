@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { TConstructorIngredient, TIngredient } from '../../../utils/types';
+import { TConstructorIngredient, TIngredient } from '../../../utils/types/types';
 import { RootState } from '../../store';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { fetchMakeOrder } from '../orderSlice';

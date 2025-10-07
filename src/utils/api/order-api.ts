@@ -1,10 +1,10 @@
-import { getCookie } from '../cookie';
+import { getCookie } from '../types/cookie';
 import { fetchWithRefresh, URL, checkResponse } from './base-api';
 import {
   TOrderResponse,
   TFeedsResponse,
   TNewOrderResponse
-} from '../api-types';
+} from '../types/api-types';
 
 // получить список текущих заказов (orderSlice -> fetchGetOrders)
 export const getOrdersApi = () =>

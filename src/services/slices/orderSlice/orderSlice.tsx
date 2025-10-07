@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { TOrder } from '../../../utils/types';
+import { TOrder } from '../../../utils/types/types';
 import { RootState } from 'src/services/store';
-import { TNewOrderResponse } from '../../../utils/api-types';
+import { TNewOrderResponse } from '../../../utils/types/api-types';
 import {
   orderBurgerApi,
   getOrderByNumberApi

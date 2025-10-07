@@ -1,5 +1,5 @@
 import { URL, checkResponse } from './base-api';
-import { TFeedsResponse } from '../api-types';
+import { TFeedsResponse } from '../types/api-types';
 
 // получение ленты заказов (feedtSlice -> fetchGetFeeds)
 export const getFeedsApi = () =>

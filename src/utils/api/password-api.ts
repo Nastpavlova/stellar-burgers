@@ -1,6 +1,6 @@
-import { TServerResponse } from './api-types';
+import { TServerResponse } from '../types/api-types';
 
-import { checkResponse, URL } from './api/base-api';
+import { checkResponse, URL } from './base-api';
 
 export const forgotPasswordApi = (data: { email: string }) =>
   fetch(`${URL}/password-reset`, {

@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { TConstructorIngredient } from '@utils-types';
+import { TConstructorIngredient } from 'src/utils/types/types';
 import { BurgerConstructorUI } from '@ui';
 import {
   selectorIngredients,

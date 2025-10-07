@@ -98,27 +98,28 @@ export const fetchRegistrationhUser = createAsyncThunk<
 
 // проверка авторизации
 export const checkUserAuth = createAsyncThunk<
+  TUser | null,
   void,
-  void,
-  { dispatch: AppDispatch }
->('user/checkUserAuth', async (_, { dispatch }) => {
-  if (localStorage.getItem('refreshToken')) {
-    try {
-      const res = await getUserApi();
-      if (res.success) {
-        dispatch(setUser(res.user));
-      } else {
-        dispatch(setUser(null));
-      }
-    } catch {
-      dispatch(setUser(null));
+  { rejectValue: string }
+>('user/checkUserAuth', async (_, { rejectWithValue }) => {
+  if (!localStorage.getItem('refreshToken')) {
+    return null;
+  }
+
+  try {
+    const res = await getUserApi();
+    if (res.success) {
+      return res.user;
+    } else {
       localStorage.removeItem('refreshToken');
       setCookie('accessToken', '', { expires: -1 });
+      return null;
     }
-  } else {
-    dispatch(setUser(null));
+  } catch (error) {
+    localStorage.removeItem('refreshToken');
+    setCookie('accessToken', '', { expires: -1 });
+    return rejectWithValue((error as Error).message);
   }
-  dispatch(setAuthChecked(true));
 });
 
 export const userSlice = createSlice({
@@ -137,36 +138,79 @@ export const userSlice = createSlice({
     builder
 
       // залогиниться
-      .addCase(fetchLogin.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.isAuthChecked = true;
-      })
-
-      // разлогиниться
-      .addCase(fetchLogout.fulfilled, (state) => {
-        state.user = null;
-        state.isAuthChecked = false;
-      })
-
-      // обновить данные пользователя
-      .addCase(fetchUpdateUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-      })
-
-      // регистрация нового юзера
-      .addCase(fetchRegistrationhUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.isAuthChecked = true;
-      })
-
-      // pending
-      .addMatcher(isPending, (state) => {
+      .addCase(fetchLogin.pending, (state) => {
         state.error = null;
       })
 
-      // rejected
-      .addMatcher(isRejected, (state, action) => {
-        state.error = action.error.message as string;
+      .addCase(fetchLogin.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isAuthChecked = true;
+        state.error = null;
+      })
+
+      .addCase(fetchLogin.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // разлогиниться
+      .addCase(fetchLogout.pending, (state) => {
+        state.error = null;
+      })
+
+      .addCase(fetchLogout.fulfilled, (state) => {
+        state.user = null;
+        state.isAuthChecked = true;
+        state.error = null;
+      })
+
+      .addCase(fetchLogout.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // обновить данные пользователя
+      .addCase(fetchUpdateUser.pending, (state) => {
+        state.error = null;
+      })
+
+      .addCase(fetchUpdateUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.error = null;
+      })
+
+      .addCase(fetchUpdateUser.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // регистрация нового юзера
+      .addCase(fetchRegistrationhUser.pending, (state) => {
+        state.error = null;
+      })
+
+      .addCase(fetchRegistrationhUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isAuthChecked = true;
+        state.error = null;
+      })
+
+      .addCase(fetchRegistrationhUser.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // проверка авторизации
+      .addCase(checkUserAuth.pending, (state) => {
+        state.error = null;
+      })
+
+      .addCase(checkUserAuth.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isAuthChecked = true;
+        state.error = null;
+      })
+
+      .addCase(checkUserAuth.rejected, (state, action) => {
+        state.user = null;
+        state.isAuthChecked = true;
+        state.error = action.payload as string;
       });
   }
 });

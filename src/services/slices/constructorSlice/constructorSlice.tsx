@@ -25,11 +25,8 @@ export const constructorBurgerSlice = createSlice({
       state.bun = action.payload;
     },
 
-    addIngredient: (state, action: PayloadAction<TIngredient>) => {
-      state.ingredients.push({
-        ...action.payload,
-        id: nanoid()
-      });
+    addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
+      state.ingredients.push(action.payload);
     },
 
     removeIngredient: (state, action: PayloadAction<string>) => {
@@ -69,6 +66,15 @@ export const constructorBurgerSlice = createSlice({
     });
   }
 });
+
+// action creator
+export const createAddIngredientAction = (
+  ingredient: TIngredient
+): PayloadAction<TConstructorIngredient> =>
+  addIngredient({
+    ...ingredient,
+    id: nanoid()
+  });
 
 // селекторы
 export const selectorBun = (state: RootState) => state.constructorBurger.bun;

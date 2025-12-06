@@ -4,19 +4,8 @@
 declare global {
   namespace Cypress {
     interface Chainable<Subject = any> {
-      /**
-       * Авторизация пользователя
-       */
       login(): Chainable<void>
-      
-      /**
-       * Собрать тестовый бургер
-       */
       buildTestBurger(): Chainable<void>
-      
-      /**
-       * Проверить пустой конструктор
-       */
       assertEmptyConstructor(): Chainable<void>
     }
   }

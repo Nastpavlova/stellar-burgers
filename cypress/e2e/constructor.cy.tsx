@@ -129,20 +129,20 @@ describe('Конструктор бургера: тесты', () => {
             cy.contains('Выберите начинку').should('exist');
         });
 
-        it('Не должен создать заказ без булки', () => {
+        it('не должен создать заказ без булки', () => {
             // Добавляем только начинку (без булки)
             cy.contains(MAIN_INGREDIENT_NAME).parent().within(() => {
-            cy.get('button').click();
+                cy.get('button').click();
             });
 
             // Кнопка должна быть неактивна
             cy.get('[data-testid="order-button"]').should('be.disabled');
         });
 
-        it('Не должен создать заказ без начинок', () => {
+        it('не должен создать заказ без начинок', () => {
             // Добавляем только булку (без начинок)
             cy.contains(BUN_NAME).parent().within(() => {
-            cy.get('button').click();
+                cy.get('button').click();
             });
 
             // Кнопка должна быть неактивна (нужна хотя бы одна начинка)

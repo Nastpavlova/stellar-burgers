@@ -19,7 +19,7 @@ interface orderState {
   error: string | null;
 }
 
-const initialState: orderState = {
+export const initialState: orderState = {
   // для создания заказа
   orderRequest: false,
   orderModalData: null,

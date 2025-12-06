@@ -1,6 +1,5 @@
 import type { JestConfigWithTsJest } from 'ts-jest';
 
-
 const config: JestConfigWithTsJest = {
   transform: {
           // '^.+\\.[tj]sx?$' для обработки файлов js/ts с помощью `ts-jest`
@@ -17,8 +16,5 @@ const config: JestConfigWithTsJest = {
   coverageDirectory: "coverage",
   coverageProvider: "v8",
 };
-
-
-
 
 export default config;

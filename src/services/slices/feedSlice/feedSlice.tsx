@@ -10,7 +10,7 @@ interface TfeedState {
   error: string | null;
 }
 
-const initialState: TfeedState = {
+export const initialState: TfeedState = {
   ordersData: {
     orders: [],
     total: 0,

@@ -5,7 +5,7 @@ import {
     mockIngredientsWithID,
     afterDeleteMockIngredientsWithID,
     afterMoveMockIngredientsWithID
-} from './ingredients.mock.ts';
+} from './ingredients.mock';
 import { fetchMakeOrder } from '../orderSlice';
 import {
     constructorReducer,

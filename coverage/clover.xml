@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1765033591998" clover="3.2.0">
-  <project timestamp="1765033591998" name="All files">
-    <metrics statements="1031" coveredstatements="705" conditionals="15" coveredconditionals="15" methods="51" coveredmethods="11" elements="1097" coveredelements="731" complexity="0" loc="1031" ncloc="1031" packages="9" files="20" classes="20"/>
+<coverage generated="1765036546438" clover="3.2.0">
+  <project timestamp="1765036546438" name="All files">
+    <metrics statements="1057" coveredstatements="742" conditionals="18" coveredconditionals="18" methods="51" coveredmethods="11" elements="1126" coveredelements="771" complexity="0" loc="1057" ncloc="1057" packages="9" files="21" classes="21"/>
     <package name="services">
       <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="store.ts" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/store.ts">
@@ -146,7 +146,7 @@
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
-      <file name="ingredients.mock.ts.ts" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/slices/constructorSlice/ingredients.mock.ts.ts">
+      <file name="ingredients.mock.ts" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/slices/constructorSlice/ingredients.mock.ts">
         <metrics statements="126" coveredstatements="126" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -277,9 +277,9 @@
       </file>
     </package>
     <package name="services.slices.feedSlice">
-      <metrics statements="70" coveredstatements="53" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="1"/>
+      <metrics statements="96" coveredstatements="90" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="1"/>
       <file name="feedSlice.tsx" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/slices/feedSlice/feedSlice.tsx">
-        <metrics statements="69" coveredstatements="52" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="1"/>
+        <metrics statements="69" coveredstatements="63" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -320,24 +320,24 @@
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="41" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
+        <line num="46" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
@@ -353,6 +353,35 @@
       <file name="index.ts" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/slices/feedSlice/index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="orders.mock.ts" path="/Users/dzhakhbarova/Documents/code/pr12/stellar-burgers/src/services/slices/feedSlice/orders.mock.ts">
+        <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
     </package>
     <package name="services.slices.ingredientSlice">

@@ -1,16 +1,16 @@
 // bun - булка
 export const mockBun = {
-    _id: '2',
-    name: 'Краторная булка N-200i',
-    type: 'bun',
-    proteins: 80,
-    fat: 24,
-    carbohydrates: 53,
-    calories: 420,
-    price: 1255,
-    image: 'https://code.s3.yandex.net/react/code/bun-02.png',
-    image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
-    image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png'
+  _id: '2',
+  name: 'Краторная булка N-200i',
+  type: 'bun',
+  proteins: 80,
+  fat: 24,
+  carbohydrates: 53,
+  calories: 420,
+  price: 1255,
+  image: 'https://code.s3.yandex.net/react/code/bun-02.png',
+  image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
+  image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png'
 };
 
 // ingredient - main
@@ -29,7 +29,7 @@ export const mockMainIngredient = {
 };
 
 // ingredient - соус
-export const mockSauce =   {
+export const mockSauce = {
   _id: '3',
   name: 'Соус с шипами Антарианского плоскоходца',
   type: 'sauce',
@@ -75,7 +75,7 @@ export const mockIngredientsWithID = [
   }
 ];
 
-// DELETE: ingredients + ID - ингредиенты с id после удаления 
+// DELETE: ingredients + ID - ингредиенты с id после удаления
 export const afterDeleteMockIngredientsWithID = [
   {
     id: 'mockedId-2',
@@ -93,7 +93,7 @@ export const afterDeleteMockIngredientsWithID = [
   }
 ];
 
-// MOVE: ingredients + ID - ингредиенты с id после move 
+// MOVE: ingredients + ID - ингредиенты с id после move
 export const afterMoveMockIngredientsWithID = [
   {
     id: 'mockedId-2',

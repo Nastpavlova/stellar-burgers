@@ -10,7 +10,6 @@ import { initialState as userInitialState } from './slices/userSlice/userSlice';
 
 describe('rootReducer tests', () => {
     it('rootReducer: test of the correct initialization', () => {
-
         const store = configureStore({
             reducer: rootReducer
         });
@@ -24,6 +23,6 @@ describe('rootReducer tests', () => {
             order: orderInitialState,
             orders: ordersInitialState,
             user: userInitialState
-        })
+        });
     });
 });

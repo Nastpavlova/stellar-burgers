@@ -25,4 +25,20 @@ describe('rootReducer tests', () => {
       user: userInitialState
     });
   });
+
+  it('rootReducer: should return initial state when called with undefined state and unknown action', () => {
+    const state = rootReducer(
+        undefined, 
+        { type: 'UNKNOWN_ACTION' }
+    );
+
+    expect(state).toEqual({
+      ingredients: ingredientInitialState,
+      constructorBurger: constructorBurgerInitialState,
+      feed: feedInitialState,
+      order: orderInitialState,
+      orders: ordersInitialState,
+      user: userInitialState
+    });
+  });
 });

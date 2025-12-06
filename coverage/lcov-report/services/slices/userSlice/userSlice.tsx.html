@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.22% </span>
+                <span class="strong">80.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>183/231</span>
+                <span class='fraction'>194/242</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">79.22% </span>
+                <span class="strong">80.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>183/231</span>
+                <span class='fraction'>194/242</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -294,11 +294,18 @@
 <a name='L229'></a><a href='#L229'>229</a>
 <a name='L230'></a><a href='#L230'>230</a>
 <a name='L231'></a><a href='#L231'>231</a>
-<a name='L232'></a><a href='#L232'>232</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -414,6 +421,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -527,11 +549,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { TUser } from '../../../utils/types/types';
 import { AppDispatch, RootState } from '../../store';
-import {
-  createSlice,
-  PayloadAction,
-  createAsyncThunk
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { setCookie } from '../../../utils/types/cookie';
 import {
   registerUserApi,
@@ -673,11 +691,14 @@ export const userSlice = createSlice({
         state.error = null;
       })
 &nbsp;
-      .addCase(fetchLogin.rejected, (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
-        state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка входа';</span>
-        state.isAuthChecked = true;
-        state.user = null;
-      })
+      .addCase(
+        fetchLogin.rejected,
+        (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
+          state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка входа';</span>
+          state.isAuthChecked = true;
+          state.user = null;
+        }
+      )
 &nbsp;
       // разлогиниться
       .addCase(fetchLogout.pending, (state) =&gt; {
@@ -690,10 +711,13 @@ export const userSlice = createSlice({
         state.error = null;
       })
 &nbsp;
-      .addCase(fetchLogout.rejected, (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
-        state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка выхода';</span>
-        state.isAuthChecked = true;
-      })
+      .addCase(
+        fetchLogout.rejected,
+        (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
+          state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка выхода';</span>
+          state.isAuthChecked = true;
+        }
+      )
 &nbsp;
       // обновить данные пользователя
       .addCase(fetchUpdateUser.pending, (state) =&gt; {
@@ -706,10 +730,13 @@ export const userSlice = createSlice({
         state.error = null;
       })
 &nbsp;
-      .addCase(fetchUpdateUser.rejected, (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
-        state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка обновления данных';</span>
-        state.isAuthChecked = true;
-      })
+      .addCase(
+        fetchUpdateUser.rejected,
+        (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
+          state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка обновления данных';</span>
+          state.isAuthChecked = true;
+        }
+      )
 &nbsp;
       // регистрация нового юзера
       .addCase(fetchRegistrationUser.pending, (state) =&gt; {
@@ -722,10 +749,13 @@ export const userSlice = createSlice({
         state.error = null;
       })
 &nbsp;
-      .addCase(fetchRegistrationUser.rejected, (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
-        state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка регистрации';</span>
-        state.isAuthChecked = true;
-      })
+      .addCase(
+        fetchRegistrationUser.rejected,
+        (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
+          state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка регистрации';</span>
+          state.isAuthChecked = true;
+        }
+      )
 &nbsp;
       // проверка авторизации
       .addCase(checkUserAuth.pending, (state) =&gt; {
@@ -738,11 +768,14 @@ export const userSlice = createSlice({
         state.error = null;
       })
 &nbsp;
-      .addCase(checkUserAuth.rejected, (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
-        state.user = null;
-        state.isAuthChecked = true;
-        state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка авторизации';</span>
-      });
+      .addCase(
+        checkUserAuth.rejected,
+        (state, action: PayloadAction&lt;string | undefined&gt;) =&gt; {
+          state.user = null;
+          state.isAuthChecked = true;
+          state.error = action.payload<span class="branch-0 cbranch-no" title="branch not covered" > || 'Ошибка авторизации';</span>
+        }
+      );
   }
 });
 &nbsp;
@@ -763,7 +796,7 @@ export const userReducer = userSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-06T19:14:22.985Z
+                at 2025-12-06T19:26:55.358Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

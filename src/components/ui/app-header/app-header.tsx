@@ -16,15 +16,24 @@ interface NavItemProps {
   text: string;
   userName?: string;
   className?: string; //дополнительные CSS классы
+  'data-testid'?: string;
 }
 
 // кастомный компонент навигации для хедера
-const NavItem = ({ to, icon, text, userName, className }: NavItemProps) => (
+const NavItem = ({
+  to,
+  icon,
+  text,
+  userName,
+  className,
+  'data-testid': dataTestId
+}: NavItemProps) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
       clsx(styles.link, isActive && styles.link_active, className)
     }
+    data-testid={dataTestId}
   >
     {({ isActive }) => (
       <div className={clsx(styles.link, isActive && styles.link_active)}>
@@ -36,7 +45,7 @@ const NavItem = ({ to, icon, text, userName, className }: NavItemProps) => (
 );
 
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
-  <header className={styles.header}>
+  <header className={styles.header} data-testid='app-header'>
     <nav className={`${styles.menu} p-4`}>
       <div className={styles.menu_part_left}>
         <NavItem
@@ -46,6 +55,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
           )}
           text='Конструктор'
           className='mr-10'
+          data-testid='constructor-link'
         />
         <NavItem
           to='/feed'
@@ -53,6 +63,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
             <ListIcon type={isActive ? 'primary' : 'secondary'} />
           )}
           text='Лента заказов'
+          data-testid='feed-link'
         />
       </div>
 
@@ -62,6 +73,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
           className={({ isActive }) =>
             clsx(styles.link, isActive && styles.link_active)
           }
+          data-testid='logo-link'
         >
           <Logo className='' />
         </NavLink>
@@ -75,6 +87,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
           )}
           text='Личный кабинет'
           userName={userName}
+          data-testid='profile-link'
         />
       </div>
     </nav>

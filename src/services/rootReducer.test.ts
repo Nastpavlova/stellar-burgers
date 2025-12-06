@@ -27,10 +27,7 @@ describe('rootReducer tests', () => {
   });
 
   it('rootReducer: should return initial state when called with undefined state and unknown action', () => {
-    const state = rootReducer(
-        undefined, 
-        { type: 'UNKNOWN_ACTION' }
-    );
+    const state = rootReducer(undefined, { type: 'UNKNOWN_ACTION' });
 
     expect(state).toEqual({
       ingredients: ingredientInitialState,

@@ -9,20 +9,20 @@ import { initialState as ordersInitialState } from './slices/ordersSlice/ordersS
 import { initialState as userInitialState } from './slices/userSlice/userSlice';
 
 describe('rootReducer tests', () => {
-    it('rootReducer: test of the correct initialization', () => {
-        const store = configureStore({
-            reducer: rootReducer
-        });
-
-        const state = store.getState();
-
-        expect(state).toEqual({
-            ingredients: ingredientInitialState,
-            constructorBurger: constructorBurgerInitialState,
-            feed: feedInitialState,
-            order: orderInitialState,
-            orders: ordersInitialState,
-            user: userInitialState
-        });
+  it('rootReducer: test of the correct initialization', () => {
+    const store = configureStore({
+      reducer: rootReducer
     });
+
+    const state = store.getState();
+
+    expect(state).toEqual({
+      ingredients: ingredientInitialState,
+      constructorBurger: constructorBurgerInitialState,
+      feed: feedInitialState,
+      order: orderInitialState,
+      orders: ordersInitialState,
+      user: userInitialState
+    });
+  });
 });

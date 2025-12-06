@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import {
-  fetchRegistrationhUser,
+  fetchRegistrationUser,
   selectorUserError
 } from '../../services/slices/userSlice';
 import { useDispatch, useSelector } from '../../services/store';
@@ -25,7 +25,7 @@ export const Register: FC = () => {
       password: password
     };
 
-    dispatch(fetchRegistrationhUser(dataRegistration));
+    dispatch(fetchRegistrationUser(dataRegistration));
     navigate('/profile');
   };
 

@@ -1,4 +1,4 @@
-// ingredient - булка
+// bun - булка
 export const mockBun = {
     _id: '2',
     name: 'Краторная булка N-200i',
@@ -13,7 +13,7 @@ export const mockBun = {
     image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png'
 };
 
-// ingredient - ингредиент (type = main)
+// ingredient - main
 export const mockMainIngredient = {
   _id: '1',
   name: 'Биокотлета из марсианской Магнолии',

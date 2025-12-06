@@ -27,7 +27,6 @@ jest.mock('@reduxjs/toolkit', () => {
 });
 
 describe('constructorSlice: all tests', () => {
-
     describe('constructorSlice: add ingredient', () => {
         it('add bun ingredient', () => {
             const state = constructorReducer(
@@ -67,15 +66,12 @@ describe('constructorSlice: all tests', () => {
             ...initialState,
             ingredients: mockIngredientsWithID
         };
-
-        const firstIngredientId = mockIngredientsWithID[0].id
-
+        const firstIngredientId = mockIngredientsWithID[0].id;
         const stateAfterDelete = constructorReducer(
             initialIngredientsState,
             removeIngredient(firstIngredientId)
-        )
-
-        expect(stateAfterDelete.ingredients).toEqual(afterDeleteMockIngredientsWithID)
+        );
+        expect(stateAfterDelete.ingredients).toEqual(afterDeleteMockIngredientsWithID);
     });
 
     describe('constructorSlice: move ingredients', () => {
@@ -84,13 +80,11 @@ describe('constructorSlice: all tests', () => {
                 ...initialState,
                 ingredients: mockIngredientsWithID
             };
-
             const stateAfterMove = constructorReducer(
                 initialIngredientsState, 
                 moveIngredientUp(1)
             );
-
-            expect(stateAfterMove.ingredients).toEqual(afterMoveMockIngredientsWithID)
+            expect(stateAfterMove.ingredients).toEqual(afterMoveMockIngredientsWithID);
         });
 
         it('should not move first ingredient up', () => {
@@ -98,12 +92,10 @@ describe('constructorSlice: all tests', () => {
                 ...initialState,
                 ingredients: mockIngredientsWithID
             };
-            
             const state = constructorReducer(
                 initialIngredientsState,
                 moveIngredientUp(0)
             );
-            
             expect(state.ingredients).toEqual(mockIngredientsWithID);
         });
 
@@ -112,13 +104,11 @@ describe('constructorSlice: all tests', () => {
                 ...initialState,
                 ingredients: mockIngredientsWithID
             };
-
             const stateAfterMove = constructorReducer(
                 initialIngredientsState, 
                 moveIngredientDown(0)
             );
-
-            expect(stateAfterMove.ingredients).toEqual(afterMoveMockIngredientsWithID)
+            expect(stateAfterMove.ingredients).toEqual(afterMoveMockIngredientsWithID);
         });
 
         it('should not move last ingredient down', () => {
@@ -126,28 +116,23 @@ describe('constructorSlice: all tests', () => {
                 ...initialState,
                 ingredients: mockIngredientsWithID
             };
-            
             const state = constructorReducer(
                 initialIngredientsState,
                 moveIngredientDown(1)
             );
-            
             expect(state.ingredients).toEqual(mockIngredientsWithID);
         });
-    })
+    });
 
     it('constructorSlice: should clear constructor when order is successfully created', () => {
         const filledConstructor = {
             bun: mockBun,
             ingredients: mockIngredientsWithID
         };
-        
         const action = {
             type: fetchMakeOrder.fulfilled.type
         };
-
         const state = constructorReducer(filledConstructor, action);
-
         expect(state.ingredients).toEqual([]);
         expect(state.bun).toBeNull();
     }); 

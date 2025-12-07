@@ -1,12 +1,6 @@
 import { TUser } from '../../../utils/types/types';
 import { AppDispatch, RootState } from '../../store';
-import {
-  createSlice,
-  PayloadAction,
-  createAsyncThunk,
-  isPending,
-  isRejected
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { setCookie } from '../../../utils/types/cookie';
 import {
   registerUserApi,
@@ -29,7 +23,7 @@ interface TUserState {
   error: string | null;
 }
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuthChecked: false,
   user: null,
   error: null
@@ -81,7 +75,7 @@ export const fetchUpdateUser = createAsyncThunk<
 });
 
 // регистрация нового юзера
-export const fetchRegistrationhUser = createAsyncThunk<
+export const fetchRegistrationUser = createAsyncThunk<
   TAuthResponse,
   TRegisterData,
   { rejectValue: string }
@@ -148,9 +142,14 @@ export const userSlice = createSlice({
         state.error = null;
       })
 
-      .addCase(fetchLogin.rejected, (state, action) => {
-        state.error = action.payload as string;
-      })
+      .addCase(
+        fetchLogin.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.error = action.payload || 'Ошибка входа';
+          state.isAuthChecked = true;
+          state.user = null;
+        }
+      )
 
       // разлогиниться
       .addCase(fetchLogout.pending, (state) => {
@@ -163,9 +162,13 @@ export const userSlice = createSlice({
         state.error = null;
       })
 
-      .addCase(fetchLogout.rejected, (state, action) => {
-        state.error = action.payload as string;
-      })
+      .addCase(
+        fetchLogout.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.error = action.payload || 'Ошибка выхода';
+          state.isAuthChecked = true;
+        }
+      )
 
       // обновить данные пользователя
       .addCase(fetchUpdateUser.pending, (state) => {
@@ -174,27 +177,36 @@ export const userSlice = createSlice({
 
       .addCase(fetchUpdateUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.isAuthChecked = true;
         state.error = null;
       })
 
-      .addCase(fetchUpdateUser.rejected, (state, action) => {
-        state.error = action.payload as string;
-      })
+      .addCase(
+        fetchUpdateUser.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.error = action.payload || 'Ошибка обновления данных';
+          state.isAuthChecked = true;
+        }
+      )
 
       // регистрация нового юзера
-      .addCase(fetchRegistrationhUser.pending, (state) => {
+      .addCase(fetchRegistrationUser.pending, (state) => {
         state.error = null;
       })
 
-      .addCase(fetchRegistrationhUser.fulfilled, (state, action) => {
+      .addCase(fetchRegistrationUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isAuthChecked = true;
         state.error = null;
       })
 
-      .addCase(fetchRegistrationhUser.rejected, (state, action) => {
-        state.error = action.payload as string;
-      })
+      .addCase(
+        fetchRegistrationUser.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.error = action.payload || 'Ошибка регистрации';
+          state.isAuthChecked = true;
+        }
+      )
 
       // проверка авторизации
       .addCase(checkUserAuth.pending, (state) => {
@@ -207,11 +219,14 @@ export const userSlice = createSlice({
         state.error = null;
       })
 
-      .addCase(checkUserAuth.rejected, (state, action) => {
-        state.user = null;
-        state.isAuthChecked = true;
-        state.error = action.payload as string;
-      });
+      .addCase(
+        checkUserAuth.rejected,
+        (state, action: PayloadAction<string | undefined>) => {
+          state.user = null;
+          state.isAuthChecked = true;
+          state.error = action.payload || 'Ошибка авторизации';
+        }
+      );
   }
 });
 
